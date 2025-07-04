@@ -389,7 +389,7 @@ Examples:
             # Show progress
             progress = ProgressBar(session.total_requests)
             
-            while not session.is_complete() and not self.interrupted:
+            while not session.is_complete and not self.interrupted:
                 time.sleep(0.1)
                 progress.update(session.completed_requests)
                 
@@ -441,7 +441,7 @@ Examples:
                     'target_url': session.config.target_url,
                     'scan_level': session.config.scan_level.value,
                     'timestamp': session.start_time.isoformat(),
-                    'duration': session.get_duration(),
+                    'duration': session.duration,
                     'total_requests': session.total_requests,
                     'completed_requests': session.completed_requests,
                     'found_results': len(session.results)
@@ -508,10 +508,13 @@ Examples:
         # Basic stats
         print(f"Target URL: {session.config.target_url}")
         print(f"Scan Level: {session.config.scan_level.value}")
-        print(f"Duration: {session.get_duration():.2f}s")
+        print(f"Duration: {session.duration:.2f}s")
         print(f"Total Requests: {session.total_requests}")
         print(f"Completed: {session.completed_requests}")
-        print(f"Success Rate: {(session.completed_requests/session.total_requests)*100:.1f}%")
+        if session.total_requests > 0:
+            print(f"Success Rate: {(session.completed_requests/session.total_requests)*100:.1f}%")
+        else:
+            print("Success Rate: N/A (no requests made)")
         
         # Results by status code
         if session.results:

@@ -46,6 +46,7 @@ class ScanSession:
     total_requests: int = 0
     results: List[ScanResult] = None
     errors: List[str] = None
+    config: Any = None
     
     def __post_init__(self):
         if self.results is None:
@@ -58,6 +59,14 @@ class ScanSession:
         """Get scan duration in seconds"""
         end = self.end_time if self.end_time > 0 else time.time()
         return end - self.start_time
+
+    @property
+    def is_complete(self) -> bool:
+        return self.end_time > 0
+
+    @property
+    def completed_requests(self) -> int:
+        return len(self.results)
 
 class FuzzEngine:
     """Main fuzzing engine that orchestrates all scanning activities"""
@@ -120,7 +129,8 @@ class FuzzEngine:
         self.session = ScanSession(
             target_url=self.config.target_url,
             scan_level=self.config.scan_level,
-            start_time=time.time()
+            start_time=time.time(),
+            config=self.config
         )
         
         try:
@@ -257,8 +267,6 @@ class FuzzEngine:
             "-timeout", str(self.config.timeout),
             "-o", "-",  # Output to stdout
             "-of", "json",  # JSON output format
-            "-c",  # Colorized output
-            "-v"   # Verbose mode
         ]
         
         # Add status code filtering
