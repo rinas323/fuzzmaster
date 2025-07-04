@@ -1,0 +1,32 @@
+delay: 0.05
+description: Thorough scan with extended wordlists
+extensions:
+- php
+- html
+- txt
+- js
+- css
+- json
+- xml
+- asp
+- aspx
+filters:
+  enable_smart_filtering: true
+  similarity_threshold: 0.9
+max_depth: 2
+name: Comprehensive Scan
+recursive: true
+status_codes:
+- 200
+- 301
+- 302
+- 307
+- 308
+- 403
+- 405
+threads: 50
+timeout: 10
+wordlists:
+- common.txt
+- directories.txt
+- files.txt

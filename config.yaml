@@ -1,0 +1,38 @@
+filtering:
+  content_filters:
+    enable_smart_filtering: true
+    error_detection: true
+    similarity_threshold: 0.9
+  exclude_patterns: []
+  max_response_size: 0
+  min_response_size: 0
+  status_codes:
+  - 200
+  - 301
+  - 302
+  - 307
+  - 308
+  - 403
+  - 405
+general:
+  delay: 0.0
+  follow_redirects: true
+  threads: 50
+  timeout: 10
+  user_agent: FuzzMaster/1.0
+output:
+  format: json
+  include_errors: false
+  include_filtered: false
+  screenshot: false
+wordlists:
+  default_directory:
+  - common.txt
+  - directories.txt
+  default_files:
+  - files.txt
+  - common.txt
+  default_parameters:
+  - parameters.txt
+  default_subdomains:
+  - subdomains.txt

@@ -205,15 +205,18 @@ class ConfigManager:
     def create_config(self, target_url: str, scan_level: ScanLevel, **kwargs) -> FuzzConfig:
         """Create a FuzzConfig instance with profile and custom settings"""
         profile = self.load_profile(scan_level)
-        
-        # Merge profile with default config and custom kwargs
+        # List of valid FuzzConfig fields
+        valid_fields = {
+            'target_url', 'scan_level', 'threads', 'timeout', 'delay', 'follow_redirects',
+            'recursive', 'max_depth', 'status_codes', 'extensions', 'wordlists',
+            'output_format', 'output_file', 'stealth_mode', 'user_agent', 'headers'
+        }
         config_dict = {
             "target_url": target_url,
             "scan_level": scan_level,
-            **profile,
-            **kwargs
+            **{k: v for k, v in profile.items() if k in valid_fields},
+            **{k: v for k, v in kwargs.items() if k in valid_fields}
         }
-        
         return FuzzConfig(**config_dict)
     
     def get_wordlist_path(self, wordlist_name: str) -> Path:

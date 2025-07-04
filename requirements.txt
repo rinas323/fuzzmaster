@@ -10,11 +10,6 @@ aiohttp>=3.8.0
 pyyaml>=6.0
 jsonschema>=4.0.0
 
-# Threading and async
-concurrent-futures>=3.1.1
-
-# Text processing and analysis
-difflib2>=0.1.0
 python-Levenshtein>=0.12.0
 
 # Progress and CLI

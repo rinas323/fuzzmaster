@@ -11,14 +11,15 @@ __email__ = "info@fuzzmaster.com"
 __license__ = "MIT"
 
 # Core imports
-from .core.config import FuzzConfig, ConfigManager, ScanLevel
-from .core.engine import FuzzEngine, ScanSession
-from .core.analyzer import ResponseAnalyzer, AnalysisResult
-from .core.filters import FilterManager, ResponseFilter
-from .core.utils import OutputManager, ProgressBar
+from .config import FuzzConfig, ConfigManager, ScanLevel
+from .engine import FuzzEngine, ScanSession
+from .analyzer import ResponseAnalyzer
+from .filters import FilterManager, ResponseFilter
+from ..utils.output_manager import OutputManager
+from ..utils.progress_bar import ProgressBar
 
 # Main CLI
-from .cli import FuzzMasterCLI
+from ..cli import FuzzMasterCLI
 
 # Version info
 VERSION_INFO = {

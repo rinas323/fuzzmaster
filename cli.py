@@ -16,7 +16,8 @@ import signal
 from .core.config import ConfigManager, ScanLevel, FuzzConfig
 from .core.engine import FuzzEngine, ScanSession
 from .core.analyzer import ResponseAnalyzer
-from .core.utils import OutputManager, ProgressBar
+from .utils.output_manager import OutputManager
+from .utils.progress_bar import ProgressBar
 
 class FuzzMasterCLI:
     """Main CLI class for FuzzMaster"""
@@ -378,7 +379,8 @@ Examples:
         # Initialize engine and analyzer
         self.engine = FuzzEngine(config)
         if not args.no_analysis:
-            self.analyzer = ResponseAnalyzer(similarity_threshold=args.similarity_threshold)
+            self.analyzer = ResponseAnalyzer(config)
+            self.analyzer.similarity_threshold = args.similarity_threshold
         
         # Start the scan
         try:

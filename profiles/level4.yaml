@@ -1,0 +1,52 @@
+delay: 0.01
+description: Maximum coverage with all techniques
+extensions:
+- php
+- html
+- txt
+- js
+- css
+- json
+- xml
+- asp
+- aspx
+- jsp
+- do
+- action
+- py
+- rb
+- pl
+- cgi
+filters:
+  content_analysis: true
+  enable_smart_filtering: true
+  ml_classification: true
+  similarity_threshold: 0.8
+max_depth: 5
+name: Expert Mode
+recursive: true
+status_codes:
+- 200
+- 201
+- 204
+- 301
+- 302
+- 304
+- 307
+- 308
+- 400
+- 401
+- 403
+- 405
+- 500
+- 501
+- 502
+- 503
+threads: 100
+timeout: 20
+wordlists:
+- common.txt
+- directories.txt
+- files.txt
+- parameters.txt
+- subdomains.txt

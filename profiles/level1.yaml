@@ -1,0 +1,21 @@
+delay: 0.1
+description: Fast scan with common directories and files
+extensions:
+- html
+- php
+- txt
+filters:
+  enable_smart_filtering: true
+  similarity_threshold: 0.95
+max_depth: 1
+name: Basic Discovery
+recursive: false
+status_codes:
+- 200
+- 301
+- 302
+- 403
+threads: 30
+timeout: 5
+wordlists:
+- common.txt

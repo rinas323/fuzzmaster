@@ -1,0 +1,42 @@
+delay: 0.02
+description: Advanced scan with custom wordlists and analysis
+extensions:
+- php
+- html
+- txt
+- js
+- css
+- json
+- xml
+- asp
+- aspx
+- jsp
+- do
+- action
+filters:
+  content_analysis: true
+  enable_smart_filtering: true
+  similarity_threshold: 0.85
+max_depth: 3
+name: Deep Analysis
+recursive: true
+status_codes:
+- 200
+- 201
+- 204
+- 301
+- 302
+- 307
+- 308
+- 400
+- 401
+- 403
+- 405
+- 500
+threads: 75
+timeout: 15
+wordlists:
+- common.txt
+- directories.txt
+- files.txt
+- parameters.txt
